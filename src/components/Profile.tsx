@@ -40,8 +40,12 @@ const Profile = () => {
     return <div>Loading ...</div>;
   }
 
+  if (!isAuthenticated) {
+    return <div></div>;
+  }
+
   return (
-    isAuthenticated && user && (
+    user ? (
       <div>
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
@@ -54,8 +58,9 @@ const Profile = () => {
           "No user metadata defined"
         )}
       </div>
-    )
+    ) : null
   );
+
 };
 
 export default Profile;
